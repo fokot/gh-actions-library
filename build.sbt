@@ -6,8 +6,8 @@ val credentialsViaEnvVariables = for {
   username <- sys.env.get("MAVEN_WRITE_USERNAME")
   password <- sys.env.get("MAVEN_WRITE_PASSWORD")
 } yield Credentials("Sonatype Nexus Repository Manager", "kodiak-helped-fawn.ngrok-free.app", username, password)
-val credentialsFile = Credentials(Path.userHome / ".sbt" / ".credentials")
-ThisBuild / credentials += credentialsViaEnvVariables.getOrElse(credentialsFile)
+
+ThisBuild / credentials += credentialsViaEnvVariables.getOrElse(Credentials(Path.userHome / ".sbt" / ".credentials"))
 
 
 ThisBuild / organization := "com.fokot2"
