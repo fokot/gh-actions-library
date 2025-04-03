@@ -24,7 +24,17 @@ jobs:
       - name: Compile & test
         run: sbt compile test
 
-      # Publish only from the main branch
-      - if: ${{ github.ref == 'refs/heads/main' }}
-        name: Publish
-        run: sbt publish
+  publish:
+    timeout-minutes: 240
+    if: ${{ github.ref == 'refs/heads/main' }}
+    needs:
+      - build
+    runs-on: ubuntu-latest
+    container:
+      image: sbtscala/scala-sbt:graalvm-community-22.0.1_1.10.11_3.6.4
+    strategy:
+      matrix:
+        scala-version: [ 3.6.4, 2.13.16 ]
+    steps:
+      - name: Publish
+        run: sbt ++${{ matrix.scala-version }} publish
