@@ -36,5 +36,6 @@ jobs:
       matrix:
         scala-version: [ 3.6.4, 2.13.16 ]
     steps:
+      - uses: actions/checkout@v4
       - name: Publish
         run: sbt ++${{ matrix.scala-version }} publish
