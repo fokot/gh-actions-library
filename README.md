@@ -17,13 +17,14 @@ They can be set also on the organisation level.
 
 I started testing nexus with
 ```
-docker run -d -p 8081:8081 --name nexus sonatype/nexus:oss
+docker run -d -p 8081:8081 --name nexus sonatype/nexus3
 ```
+and got pwd via
+
 It starts on [http://localhost:8081/nexus](http://localhost:8081/nexus).
-Default credentials are
+Default user is `admin` and password you can get via
 ```
-user: admin
-pass: admin123
+docker exec nexus cat /nexus-data/admin.password
 ```
 And then I exposed it via `ngrok`
 ```

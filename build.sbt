@@ -10,9 +10,7 @@ val credentialsViaEnvVariables = for {
 ThisBuild / credentials += credentialsViaEnvVariables.getOrElse(Credentials(Path.userHome / ".sbt" / ".credentials"))
 
 
-ThisBuild / organization := "com.fokot2"
-
-
+ThisBuild / organization := "com.fokot"
 
 lazy val root = project
   .in(file("."))
@@ -24,7 +22,7 @@ lazy val root = project
       "org.scalameta" %% "munit" % "1.0.0" % Test
     ),
     publishTo := {
-      val nexus = "https://kodiak-helped-fawn.ngrok-free.app/nexus/content/repositories/"
+      val nexus = "https://kodiak-helped-fawn.ngrok-free.app/repository/maven-"
       if (isSnapshot.value)
         Some("snapshots" at nexus + "snapshots/")
       else
