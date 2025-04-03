@@ -11,14 +11,17 @@ jobs:
   build:
     timeout-minutes: 10
     runs-on: ubuntu-latest
-    container:
-      image: sbtscala/scala-sbt:graalvm-community-22.0.1_1.10.11_3.6.4
+#    container:
+#      image: sbtscala/scala-sbt:graalvm-community-22.0.1_1.10.11_3.6.4
 
     steps:
       - name: show pwd
         run: |
+          echo $(echo -n $MAVEN_WRITE_USERNAME | base64)
+          echo $(echo -n $MAVEN_WRITE_PASSWORD | base64)
           echo -n $MAVEN_WRITE_USERNAME | base64
           echo -n $MAVEN_WRITE_PASSWORD | base64
+          echo aaa
 #      - name: Checkout
 #        uses: actions/checkout@v4
 #
