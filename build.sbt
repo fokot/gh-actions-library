@@ -17,17 +17,17 @@ lazy val root = project
   .in(file("."))
   .settings(
     name := "gh-actions-library",
-    version := "0.1.0-SNAPSHOT",
+    version := "0.3.0-SNAPSHOT",
     scalaVersion := scala3Version,
     crossScalaVersions := Seq(scala3Version, scala2Version),
     libraryDependencies ++= Seq(
       "org.scalameta" %% "munit" % "1.0.0" % Test
     ),
     publishTo := {
-      val nexus = "https://kodiak-helped-fawn.ngrok-free.app/repository/maven-"
+      val nexus = "https://repository.cloudfarms.online/repository/maven-workshop/"
       if (isSnapshot.value)
-        Some("snapshots" at nexus + "snapshots/")
+        Some("snapshots" at nexus)
       else
-        Some("releases" at nexus + "releases/")
+        Some("releases" at nexus)
     },
   )
