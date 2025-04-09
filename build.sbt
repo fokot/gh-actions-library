@@ -6,7 +6,7 @@ val scala2Version = "2.13.16"
 val credentialsViaEnvVariables = for {
   username <- sys.env.get("MAVEN_WRITE_USERNAME")
   password <- sys.env.get("MAVEN_WRITE_PASSWORD")
-} yield Credentials("Sonatype Nexus Repository Manager", "kodiak-helped-fawn.ngrok-free.app", username, password)
+} yield Credentials("Sonatype Nexus Repository Manager", "repository.cloudfarms.online", username, password)
 
 ThisBuild / credentials += credentialsViaEnvVariables.getOrElse(Credentials(Path.userHome / ".sbt" / ".credentials"))
 
